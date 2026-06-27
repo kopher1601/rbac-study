@@ -39,6 +39,8 @@ dependencies {
     runtimeOnly("com.h2database:h2")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    // Spring Boot 4 모듈 분리: MockMvc 슬라이스(@AutoConfigureMockMvc)는 webmvc-test 에 있다.
+    testImplementation("org.springframework.boot:spring-boot-webmvc-test")
     testImplementation("org.springframework.security:spring-security-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
