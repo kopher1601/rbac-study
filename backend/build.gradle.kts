@@ -19,12 +19,22 @@ repositories {
 
 // Spring Boot 의 BOM 을 platform 으로 가져와 버전 관리(io.spring.dependency-management 플러그인 불필요)
 dependencies {
-    implementation(platform("org.springframework.boot:spring-boot-dependencies:4.0.7"))
+    // annotationProcessor 는 implementation 을 상속하지 않아 BOM 을 따로 적용해야 Lombok 버전이 해결된다.
+    val springBootBom = platform("org.springframework.boot:spring-boot-dependencies:4.0.7")
+    implementation(springBootBom)
+    annotationProcessor(springBootBom)
+    testAnnotationProcessor(springBootBom)
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
+
+    // Lombok (버전은 spring-boot-dependencies BOM 관리: 1.18.46)
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+    testCompileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
 
     runtimeOnly("com.h2database:h2")
 

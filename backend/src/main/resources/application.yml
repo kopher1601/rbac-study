@@ -13,10 +13,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
-    defer-datasource-initialization: true
+  # 시드는 data.sql 이 아니라 자바 시더(DataSeeder, CommandLineRunner)로 일원화한다.
   sql:
     init:
-      mode: always
+      mode: never
   h2:
     console:
       enabled: true
