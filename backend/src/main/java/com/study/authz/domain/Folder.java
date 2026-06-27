@@ -46,4 +46,9 @@ public class Folder {
         this.ownerId = ownerId;
         this.sensitivityLevel = sensitivityLevel;
     }
+
+    /** 이름 변경(folder:write 액션에서 사용). */
+    public void rename(String name) {
+        this.name = name;
+    }
 }

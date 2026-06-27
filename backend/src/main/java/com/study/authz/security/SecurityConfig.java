@@ -27,9 +27,12 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
  *   <li><b>formLogin</b>(시드 유저 + 공통 비밀번호). 성공/실패를 리다이렉트 대신 JSON 200/401 로 응답해 SPA 친화.
  *       성공 시 폼 인증 필터가 SecurityContext 를 세션에 자동 저장(JSESSIONID)하므로 수동 저장 불필요.
  *   <li><b>CSRF disable</b>: 학습용 API + Vite same-origin 프록시. (운영이라면 세션 쿠키 기반이므로 CSRF 필요.)
- *   <li><b>역할 계층</b>은 {@link RoleHierarchy} 빈으로 선언하고, 메서드 보안에 연결하기 위해
- *       {@link MethodSecurityExpressionHandler} 를 {@code static @Bean} 으로 노출한다.
+ *   <li><b>역할 계층</b>은 {@link RoleHierarchy} 빈으로 선언한다(Security 7 은 빈만 있으면 메서드 보안이 자동 적용).
  * </ul>
+ *
+ * <p><b>⚠ 의도된 보안 트레이드오프(로컬 학습 전용, 운영 금지)</b>:
+ * h2-console 무인증 노출, CSRF 비활성, {@code GET /api/users} 로 시드 유저 목록 공개(유저 스위처 데모용),
+ * 모든 시드 유저 공통 비밀번호. 인증이 아닌 <b>인가</b> 학습에 집중하기 위한 단순화이며 실서비스에선 모두 부적절하다.
  */
 @Configuration
 @EnableMethodSecurity
