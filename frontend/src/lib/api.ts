@@ -1,4 +1,5 @@
 import type {
+  AbacResourceDecisions,
   AttemptResult,
   Decision,
   DocumentDto,
@@ -63,6 +64,21 @@ export const api = {
 
   roles(): Promise<RolesView> {
     return get('/api/rbac/roles').then(json<RolesView>)
+  },
+
+  /** ABAC 목록: PDP READ 결정으로 행 단위 필터링된 문서만(RBAC 와 달리 전부가 아님). */
+  abacDocuments(): Promise<DocumentDto[]> {
+    return get('/api/abac/documents').then(json<DocumentDto[]>)
+  },
+
+  /** 모든 문서 × 액션의 결정 + 규칙 trace(거부 케이스도 사유 포함). 인가 우회 없이 설명만. */
+  abacDocumentDecisions(): Promise<AbacResourceDecisions[]> {
+    return get('/api/abac/documents/decisions').then(json<AbacResourceDecisions[]>)
+  },
+
+  /** 모든 폴더 × 액션의 결정 + 규칙 trace. */
+  abacFolderDecisions(): Promise<AbacResourceDecisions[]> {
+    return get('/api/abac/folders/decisions').then(json<AbacResourceDecisions[]>)
   },
 
   /**

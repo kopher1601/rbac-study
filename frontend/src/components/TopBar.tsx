@@ -7,6 +7,7 @@ import { cn } from '@/lib/cn'
 const NAV = [
   { to: '/', label: '대시보드', end: true },
   { to: '/rbac', label: 'RBAC 데모', end: false },
+  { to: '/abac', label: 'ABAC 데모', end: false },
   { to: '/roles', label: '역할/권한', end: false },
 ]
 
@@ -22,7 +23,7 @@ export function TopBar() {
     <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-700 dark:bg-slate-950/90">
       <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-6 gap-y-3 px-5 py-3">
         <div className="text-base font-semibold text-slate-900 dark:text-slate-100">
-          인가 모델 스터디 <span className="text-slate-400">/ RBAC</span>
+          인가 모델 스터디 <span className="text-slate-400">/ RBAC·ABAC</span>
         </div>
 
         <nav className="flex gap-1">
