@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { TopBar } from '@/components/TopBar'
+import { AbacDemoPage } from '@/pages/AbacDemoPage'
 import { DashboardPage } from '@/pages/DashboardPage'
 import { RbacDemoPage } from '@/pages/RbacDemoPage'
 import { RolesPage } from '@/pages/RolesPage'
@@ -12,6 +13,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/rbac" element={<RbacDemoPage />} />
+          <Route path="/abac" element={<AbacDemoPage />} />
           <Route path="/roles" element={<RolesPage />} />
         </Routes>
       </main>
