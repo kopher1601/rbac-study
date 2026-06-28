@@ -52,6 +52,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/users").permitAll()
                         .requestMatchers("/api/me").authenticated()
                         .requestMatchers("/api/rbac/**").authenticated()
+                        .requestMatchers("/api/abac/**").authenticated()
                         .anyRequest().denyAll())
                 .formLogin(form -> form
                         .loginProcessingUrl("/api/login")
